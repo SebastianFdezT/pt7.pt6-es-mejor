@@ -1,0 +1,20 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<h1>{{curso.nombre_curso}}</h1>
+<div>
+    <a href="{% url 'crear-estudiante' curso.id %}">Añadir estudiante</a>
+    <div>
+        {% for estudiante in curso.estudiante_set.all %}
+            <div>
+                <h3>{{estudiante.nombres}} {{estudiante.apellidos}}</h3>
+                <a href="{% url 'actualizar-estudiante' estudiante.id %}">Actualizar estudiante</a>   
+                <a href="{% url 'eliminar-estudiante' estudiante.id %}">Eliminar estudiante</a>     
+            </div>
+        {% empty %}
+            No existe aún ningún estudiante relacionado al curso.
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

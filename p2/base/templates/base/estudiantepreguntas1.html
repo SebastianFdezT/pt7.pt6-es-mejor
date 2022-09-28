@@ -1,0 +1,18 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<h1>{{preguntas.pregunta}}</h1>
+<div>
+
+    <div>
+        {% for pregunta. in preguntas.estudiantepreguntas_set.all %}
+            <div>
+                <h3>{{estudiantepreguntas.estudiante_id}} {{estudiantepreguntas.correcto}}</h3>
+            </div>
+        {% empty %}
+            No existe aún ninguna pregunta relacionado a la prueba.
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<h1>Pruebas</h1>
+<div>
+    <h4>{{pruebas_count}} pruebas añadidas</h4>
+    <a href="{% url 'crear-prueba' %}">Añadir prueba</a>
+    <div>
+        {% for prueba in pruebas.all %}
+            <div>
+                <h3><a href="/prueba/{{prueba.id}}">{{prueba.nombre_prueba}}</a></h3>
+                <a href="{% url 'actualizar-prueba' prueba.id %}">Actualizar prueba</a> 
+                <a href="{% url 'eliminar-prueba' prueba.id %}">Eliminar prueba</a>     
+            </div>
+        {% empty %}
+            No existe aún ninguna prueba añadida.
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<h1>Temas</h1>
+<div>
+    <a href="{% url 'crear-tema' %}">Crear tema</a>
+    <div>
+        {% for tema in temas %}
+            <div>
+                <h3>{{tema.nombre_tema}}</h3>
+                <a href="{% url 'actualizar-tema' tema.id %}">Actualizar tema</a>   
+                <a href="{% url 'eliminar-tema' tema.id %}">Eliminar tema</a>           
+            </div>
+        {% empty %}
+            No existe aún ningún tema añadido.
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

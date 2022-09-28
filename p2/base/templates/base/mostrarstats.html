@@ -1,0 +1,14 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<div>
+    <div>
+        {% for e in es %}
+        <div>
+            {{e.preguntas.pregunta}} {{e.preguntas_id}} {{e.average}}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

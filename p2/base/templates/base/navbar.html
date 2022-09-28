@@ -1,0 +1,25 @@
+<div>
+    <div>        
+        {% if user.is_authenticated %}
+            <h3>Hola profesor {{ user.first_name }}!</h3>
+        {% else %}
+            <h3>Hola usuario!</h3>
+        {% endif %}       
+    </div>
+    <div>
+        <a href="/">Bienvenida</a>
+        <a>...</a>
+        <a href="{% url 'listacursos' %}">Ver lista de los cursos </a>
+        <a>...</a>
+        <a href="{% url 'listapruebas' %}">Ver pruebas añadidas</a>
+        <a>...</a>
+        <a href="{% url 'listatemas' %}">Ver temas añadidos</a>
+        <a>...</a>
+        {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}">Cerrar sesión</a>    
+        {% else %}
+            <a href="{% url 'login' %}">Iniciar sesión</a>   
+        {% endif %}
+    </div>
+    <hr>
+</div>

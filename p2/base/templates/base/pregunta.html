@@ -1,0 +1,23 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<h1>Pregunta: {{a.pregunta}}</h1>
+<h3>Proviene de prueba: {{a.nombreprueba}} y tema: {{a.nombretema}}</h3>
+<a href="{% url 'relacionar-preguntas' a.id %}">Relacionar pregunta</a>
+<form method="POST" action="#">
+    {% csrf_token %}
+    <ul>
+        {% for estudiantepreguntas in a.estudiantepreguntas_set.all %}
+            {% if estudiantepreguntas.correcto == True %}
+                <li><input type="checkbox", value="clicked", name="c{{estudiantepreguntas.id}}" checked>{{estudiantepreguntas.nombresestudiante}} respondió correctamente la pregunta</li>
+            {% else %}    
+                <li><input type="checkbox", value="clicked", name="c{{estudiantepreguntas.id}}">{{estudiantepreguntas.nombresestudiante}} NO respondió correctamente la pregunta</li>
+            {% endif %}
+            <a href="{% url 'eliminar-relacion-preguntas' estudiantepreguntas.id %}">Eliminar relación</a>
+        {% endfor %}
+    </ul>
+    <button type="submit", name="save", value="save">Guardar</button>
+    <button type="submit", name="save", value="save">Calcular</button>
+</form> 
+{% endblock content %}

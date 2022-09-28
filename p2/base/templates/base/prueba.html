@@ -1,0 +1,21 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+
+<h1>{{prueba.nombre_prueba}}</h1>
+<div>
+    <a href="{% url 'crear-preguntas' prueba.id %}">Añadir pregunta</a>
+    <div>
+        {% for preguntas in prueba.preguntas_set.all %}
+            <div>
+                <h3><a href="/pregunta/{{preguntas.id}}">{{preguntas.pregunta}}</a></h3>
+
+                <a href="{% url 'actualizar-preguntas' preguntas.id %}">Actualizar pregunta</a> 
+                <a href="{% url 'eliminar-preguntas' preguntas.id %}">Eliminar pregunta</a>
+            </div>
+        {% empty %}
+            No existe aún ninguna pregunta relacionado a la prueba.
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
